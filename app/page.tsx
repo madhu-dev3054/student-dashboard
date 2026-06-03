@@ -14,36 +14,33 @@ export default async function Home() {
   if (error) {
     return (
       <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
-        <article className="rounded-3xl bg-zinc-900 p-8 border border-red-500">
-          <h2 className="text-2xl font-bold">Database Error</h2>
-          <p className="text-zinc-400 mt-2">
-            Unable to load courses from Supabase.
-          </p>
-        </article>
+        <div className="text-red-500">
+          Failed to load courses
+        </div>
       </main>
     );
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
-      
-      {/* RESPONSIVE WRAPPER */}
+
+      {/* MAIN WRAPPER */}
       <div className="flex flex-col md:flex-row">
 
-        {/* Sidebar */}
+        {/* SIDEBAR */}
         <div className="hidden md:block">
           <Sidebar />
         </div>
 
-        {/* Main Content */}
+        {/* MAIN CONTENT */}
         <section className="flex-1 p-4 md:p-8">
 
           <HeroTile />
 
-          {/* Bento Grid */}
+          {/* BENTO GRID */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
 
-            {/* Course Cards */}
+            {/* COURSE CARDS (REAL SUPABASE DATA) */}
             {courses?.map((course: Course) => (
               <CourseCard
                 key={course.id}
@@ -52,7 +49,7 @@ export default async function Home() {
               />
             ))}
 
-            {/* NEW Activity Component */}
+            {/* ACTIVITY TILE */}
             <ActivityTile />
 
           </section>
