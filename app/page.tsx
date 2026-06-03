@@ -26,12 +26,14 @@ export default async function Home() {
 
       <div className="flex flex-col md:flex-row">
 
-        {/* MOBILE SIDEBAR */}
-        <MobileSidebar />
-
         {/* DESKTOP SIDEBAR */}
         <div className="hidden md:block">
           <Sidebar />
+        </div>
+
+        {/* MOBILE SIDEBAR */}
+        <div className="md:hidden">
+          <MobileSidebar />
         </div>
 
         {/* MAIN CONTENT */}

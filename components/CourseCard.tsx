@@ -2,16 +2,11 @@
 
 import { motion } from "framer-motion";
 
-interface Props {
-  title: string;
-  progress: number;
-}
-
-export default function CourseCard({ title, progress }: Props) {
+export default function CourseCard({ title, progress }: any) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, scale: 1 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 200, damping: 18 }}
       className="rounded-3xl bg-zinc-900 p-6 border border-zinc-800 hover:border-cyan-500/40"
