@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import { Course } from "../types/course";
 import Sidebar from "../components/Sidebar";
@@ -10,19 +10,24 @@ import ActivityTile from "../components/ActivityTile";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [courses, setCourses] = useState<Course[]>([]);
 
-  const courses = [
-    // NOTE: Supabase server fetch agar error de to tum apna original fetch yaha wapas rakh sakte ho
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await supabase.from("courses").select("*");
+      if (data) setCourses(data);
+    }
+    fetchData();
+  }, []);
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
 
-      {/* HEADER MOBILE */}
-      <div className="md:hidden p-4">
+      {/* MOBILE HEADER */}
+      <div className="md:hidden flex items-center justify-between p-4">
         <button
-          onClick={() => setOpen(!open)}
-          className="text-white text-2xl"
+          className="text-white text-3xl"
+          onClick={() => setOpen(true)}
         >
           ☰
         </button>
@@ -30,14 +35,21 @@ export default function Home() {
 
       <div className="flex">
 
-        {/* SIDEBAR DESKTOP */}
+        {/* DESKTOP SIDEBAR */}
         <div className="hidden md:block">
           <Sidebar />
         </div>
 
-        {/* SIDEBAR MOBILE */}
+        {/* MOBILE SIDEBAR */}
         {open && (
           <div className="fixed top-0 left-0 h-full w-64 bg-zinc-900 z-50">
+            <button
+              className="text-white p-4 text-xl"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </button>
+
             <Sidebar />
           </div>
         )}
@@ -49,8 +61,7 @@ export default function Home() {
 
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
 
-            {/* Course Cards */}
-            {courses?.map((course: Course) => (
+            {courses.map((course) => (
               <CourseCard
                 key={course.id}
                 title={course.title}
@@ -58,12 +69,11 @@ export default function Home() {
               />
             ))}
 
-            {/* Activity Tile */}
             <ActivityTile />
 
           </section>
-        </section>
 
+        </section>
       </div>
     </main>
   );
