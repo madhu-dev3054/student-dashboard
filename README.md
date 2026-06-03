@@ -3,70 +3,68 @@
 ## Live Demo
 https://student-dashboard-one-psi.vercel.app
 
-## Overview
+---
 
+## Overview
 A modern Student Dashboard built using Next.js, Supabase, Tailwind CSS, and Framer Motion.  
-The project focuses on responsive UI, smooth animations, and real-time database integration using Supabase.
+The project focuses on responsive UI, dynamic data fetching, and smooth animations.
+
+---
 
 ## Features
+- Dark themed dashboard UI  
+- Responsive sidebar (desktop + mobile)  
+- Dynamic course cards fetched from Supabase  
+- Animated activity graph  
+- Bento grid layout  
+- Framer Motion animations (hover + entry effects)  
+- Basic loading and error handling UI  
 
-- Dark themed dashboard UI
-- Responsive sidebar (desktop + mobile)
-- Dynamic course cards from Supabase
-- Animated activity graph
-- Bento grid layout
-- Smooth Framer Motion animations
-- Loading and error handling support
+---
 
 ## Tech Stack
+- Next.js (App Router)  
+- TypeScript  
+- Tailwind CSS  
+- Supabase (PostgreSQL)  
+- Framer Motion  
+- Lucide React  
 
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-- Supabase
-- Framer Motion
-- Lucide React
+---
 
 ## Database Schema (Supabase)
 
-Table: courses
+**Table: courses**
 
-- id (uuid, primary key)
-- title (text)
-- progress (integer)
-- icon_name (text)
-- created_at (timestamp)
+- id (uuid, primary key)  
+- title (text)  
+- progress (integer)  
+- icon_name (text)  
+- created_at (timestamp)  
+
+---
 
 ## Environment Variables
 
 Create a `.env.local` file:
 
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key  
+
+---
 
 ## Architecture
+- Server Components used for data fetching from Supabase  
+- Client Components used for UI interactions and animations  
+- Component-based structure for reusability  
+- Clear separation between UI and data logic  
 
-- Server Component used for Supabase data fetching
-- Client Components used for animations and interactions
-- Component-based reusable structure
-- Clean separation between UI and logic
+---
 
 ## Setup Instructions
 
-1. Clone repository
-2. Install dependencies
-   npm install
-3. Run development server
-   npm run dev
-4. Build for production
-   npm run build
-
-## Deployment
-
-Deploy using Vercel and connect GitHub repository for automatic deployment.
-
-## Notes
-
-- All animations are implemented using Framer Motion
-- Layout is fully responsive for all screen sizes
-- Data is dynamically fetched from Supabase
+```bash
+git clone <your-repo-url>
+cd student-dashboard
+npm install
+npm run dev
