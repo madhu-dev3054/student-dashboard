@@ -12,7 +12,7 @@ export default function ActivityTile() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 150, damping: 18 }}
-            className="rounded-3xl bg-zinc-900 p-6 border border-zinc-800 hover:border-cyan-500/40 transition"
+            className="rounded-3xl bg-zinc-900 p-6 border border-zinc-800 hover:border-cyan-500/40 active:border-cyan-500/40  transition"
         >
             <h3 className="text-lg font-semibold">Activity</h3>
             <p className="text-xs text-zinc-400 mb-4">

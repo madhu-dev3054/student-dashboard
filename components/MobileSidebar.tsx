@@ -1,14 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Menu, X, LayoutDashboard, BookOpen, Activity, Settings } from "lucide-react";
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  BookOpen,
+  Activity,
+  Settings,
+} from "lucide-react";
 
 const items = [
-  { name: "Dashboard", href: "/", icon: LayoutDashboard },
-  { name: "Courses", href: "/courses", icon: BookOpen },
-  { name: "Activity", href: "/activity", icon: Activity },
-  { name: "Settings", href: "/settings", icon: Settings },
+  { name: "Dashboard", icon: LayoutDashboard },
+  { name: "Courses", icon: BookOpen },
+  { name: "Activity", icon: Activity },
+  { name: "Settings", icon: Settings },
 ];
 
 export default function MobileSidebar() {
@@ -48,13 +54,12 @@ export default function MobileSidebar() {
 
                   return (
                     <li key={item.name}>
-                      <Link
-                        href={item.href}
+                      <button
                         onClick={() => {
                           setActive(item.name);
                           setOpen(false);
                         }}
-                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                        className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg transition text-left ${
                           active === item.name
                             ? "bg-zinc-800 text-cyan-400"
                             : "text-white hover:bg-zinc-800 active:bg-zinc-700"
@@ -62,7 +67,7 @@ export default function MobileSidebar() {
                       >
                         <Icon size={20} />
                         {item.name}
-                      </Link>
+                      </button>
                     </li>
                   );
                 })}
