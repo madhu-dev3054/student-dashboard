@@ -7,26 +7,40 @@ export default function MobileSidebar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:hidden p-4">
-      
-      <button
-        className="text-white text-3xl"
-        onClick={() => setOpen(true)}
-      >
-        ☰
-      </button>
+    <div className="md:hidden">
 
+      {/* TOP BAR BUTTON */}
+      <div className="p-4">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-white text-3xl"
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* OVERLAY SIDEBAR */}
       {open && (
-        <div className="fixed top-0 left-0 h-full w-64 bg-zinc-900 z-50">
-          
-          <button
-            className="text-white p-4 text-xl"
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </button>
+        <div className="fixed inset-0 z-50 flex">
 
-          <Sidebar />
+          {/* BACKDROP */}
+          <div
+            className="flex-1 bg-black/50"
+            onClick={() => setOpen(false)}
+          />
+
+          {/* SIDEBAR PANEL */}
+          <div className="w-64 bg-zinc-900 p-4">
+            <button
+              className="text-white mb-4"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </button>
+
+            <Sidebar />
+          </div>
+
         </div>
       )}
 

@@ -26,7 +26,7 @@ export default async function Home() {
 
       <div className="flex flex-col md:flex-row">
 
-        {/* MOBILE SIDEBAR COMPONENT (CLEAN WAY) */}
+        {/* MOBILE SIDEBAR */}
         <MobileSidebar />
 
         {/* DESKTOP SIDEBAR */}
@@ -34,7 +34,7 @@ export default async function Home() {
           <Sidebar />
         </div>
 
-        {/* MAIN */}
+        {/* MAIN CONTENT */}
         <section className="flex-1 p-4 md:p-8">
 
           <HeroTile />
@@ -54,6 +54,7 @@ export default async function Home() {
           </section>
 
         </section>
+
       </div>
 
     </main>
