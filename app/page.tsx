@@ -3,7 +3,7 @@ import { Course } from "../types/course";
 import Sidebar from "../components/Sidebar";
 import HeroTile from "../components/HeroTile";
 import CourseCard from "../components/CourseCard";
-import { motion } from "framer-motion";
+import ActivityTile from "../components/ActivityTile";
 
 export default async function Home() {
 
@@ -27,10 +27,10 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       
-      {/* RESPONSIVE WRAPPER (PDF SAFE) */}
+      {/* RESPONSIVE WRAPPER */}
       <div className="flex flex-col md:flex-row">
 
-        {/* Sidebar (hidden on mobile as per PDF responsiveness) */}
+        {/* Sidebar */}
         <div className="hidden md:block">
           <Sidebar />
         </div>
@@ -52,30 +52,8 @@ export default async function Home() {
               />
             ))}
 
-            {/* Activity Tile (PDF REQUIRED) */}
-            <article className="rounded-3xl bg-zinc-900 p-6 border border-zinc-800">
-              <h3 className="text-lg font-semibold mb-4">
-                Activity
-              </h3>
-
-              <div className="flex items-end gap-2 h-24">
-                {[3, 6, 2, 8, 5, 7, 4].map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: value * 10, opacity: 1 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: index * 0.1,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 15,
-                    }}
-                    className="w-4 bg-gradient-to-t from-blue-600 to-cyan-400 rounded-md"
-                  />
-                ))}
-              </div>
-            </article>
+            {/* NEW Activity Component */}
+            <ActivityTile />
 
           </section>
 
