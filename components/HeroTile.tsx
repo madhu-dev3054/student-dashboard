@@ -12,9 +12,8 @@ export default function HeroTile() {
         stiffness: 300,
         damping: 20,
       }}
-      whileHover={{
-        scale: 1.02,
-      }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
       className="rounded-3xl bg-zinc-900 p-8 mb-6 border border-zinc-800 hover:border-cyan-500/40 transition"
     >
       <h2 className="text-3xl font-bold">
