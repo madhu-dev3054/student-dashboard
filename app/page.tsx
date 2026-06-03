@@ -1,17 +1,12 @@
-"use client";
-import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import { Course } from "../types/course";
 import Sidebar from "../components/Sidebar";
 import HeroTile from "../components/HeroTile";
 import CourseCard from "../components/CourseCard";
 import ActivityTile from "../components/ActivityTile";
-
+import MobileSidebar from "../components/MobileSidebar";
 
 export default async function Home() {
-
-
-  const [open, setOpen] = useState(false);
 
   const { data: courses, error } = await supabase
     .from("courses")
@@ -29,45 +24,23 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
 
-      {/* WRAPPER */}
       <div className="flex flex-col md:flex-row">
 
-        <div className="md:hidden p-4">
-          <button
-            className="text-white text-3xl"
-            onClick={() => setOpen(true)}
-          >
-            ☰
-          </button>
-          {open && (
-            <div className="fixed top-0 left-0 h-full w-64 bg-zinc-900 z-50">
-              <button
-                className="text-white p-4"
-                onClick={() => setOpen(false)}
-              >
-                ✕
-              </button>
+        {/* MOBILE SIDEBAR COMPONENT (CLEAN WAY) */}
+        <MobileSidebar />
 
-              <Sidebar />
-            </div>
-          )}
-        </div>
-
-        {/* SIDEBAR (DESKTOP ONLY) */}
+        {/* DESKTOP SIDEBAR */}
         <div className="hidden md:block">
           <Sidebar />
         </div>
 
-        {/* MAIN CONTENT */}
+        {/* MAIN */}
         <section className="flex-1 p-4 md:p-8">
 
-          {/* HERO */}
           <HeroTile />
 
-          {/* BENTO GRID */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
 
-            {/* COURSE CARDS */}
             {courses?.map((course: Course) => (
               <CourseCard
                 key={course.id}
@@ -76,7 +49,6 @@ export default async function Home() {
               />
             ))}
 
-            {/* ACTIVITY TILE */}
             <ActivityTile />
 
           </section>
