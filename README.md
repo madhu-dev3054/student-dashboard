@@ -1,5 +1,8 @@
 # Student Dashboard
 
+## 🔗 Live Demo
+https://student-dashboard-one-psi.vercel.app
+
 A modern learning dashboard built with Next.js, Tailwind CSS, Supabase, Framer Motion, and Lucide React.
 
 ## Features
@@ -36,3 +39,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 * Reusable components
 * Semantic HTML structure
 * Animated UI using Framer Motion
+
+## Setup Instructions
+
+1. Clone the repo
+```bash
+git clone https://github.com/your-username/student-dashboard.git

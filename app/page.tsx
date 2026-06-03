@@ -54,12 +54,20 @@ export default async function Home() {
                 Activity
               </h3>
 
-              <div className="grid grid-cols-7 gap-2 items-end h-24">
-                {[20, 40, 60, 80, 30, 70, 90].map((height, index) => (
-                  <div
+              <div className="flex items-end gap-2 h-24">
+                {[3, 6, 2, 8, 5, 7, 4].map((value, index) => (
+                  <motion.div
                     key={index}
-                    className="bg-blue-500 rounded"
-                    style={{ height: `${height}px` }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: value * 10, opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                    }}
+                    className="w-4 bg-gradient-to-t from-blue-600 to-cyan-400 rounded-md"
                   />
                 ))}
               </div>
