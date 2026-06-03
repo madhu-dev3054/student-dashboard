@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { Menu, X, LayoutDashboard, BookOpen, Activity, Settings } from "lucide-react";
 
-const items = ["Dashboard", "Courses", "Activity", "Settings"];
+const items = [
+  { name: "Dashboard", href: "/", icon: LayoutDashboard },
+  { name: "Courses", href: "/courses", icon: BookOpen },
+  { name: "Activity", href: "/activity", icon: Activity },
+  { name: "Settings", href: "/settings", icon: Settings },
+];
 
 export default function MobileSidebar() {
   const [open, setOpen] = useState(false);
@@ -11,7 +17,7 @@ export default function MobileSidebar() {
 
   return (
     <>
-      {/* MENU BUTTON */}
+      {/* TOP MENU BUTTON */}
       <div className="md:hidden p-4">
         <button onClick={() => setOpen(true)}>
           <Menu className="text-white" />
@@ -22,8 +28,10 @@ export default function MobileSidebar() {
       {open && (
         <div className="fixed inset-0 bg-black/60 z-50">
           
+          {/* SIDEBAR */}
           <div className="fixed left-0 top-0 w-64 h-full bg-zinc-900 p-6">
-            
+
+            {/* CLOSE BUTTON */}
             <button
               className="mb-6 text-white"
               onClick={() => setOpen(false)}
@@ -31,23 +39,33 @@ export default function MobileSidebar() {
               <X />
             </button>
 
+            {/* NAV */}
             <nav>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
 
-                {items.map((item) => (
-                  <li key={item}>
-                    <button
-                      onClick={() => setActive(item)}
-                      className={`w-full text-left px-4 py-2 rounded-lg transition ${
-                        active === item
-                          ? "bg-zinc-800 text-cyan-400"
-                          : "text-white hover:bg-zinc-800"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  </li>
-                ))}
+                {items.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        onClick={() => {
+                          setActive(item.name);
+                          setOpen(false);
+                        }}
+                        className={`flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                          active === item.name
+                            ? "bg-zinc-800 text-cyan-400"
+                            : "text-white hover:bg-zinc-800 active:bg-zinc-700"
+                        }`}
+                      >
+                        <Icon size={20} />
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })}
 
               </ul>
             </nav>

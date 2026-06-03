@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import {
   LayoutDashboard,
   BookOpen,
@@ -8,42 +8,35 @@ import {
   Settings,
 } from "lucide-react";
 
-const items = [
-  { name: "Dashboard", icon: LayoutDashboard },
-  { name: "Courses", icon: BookOpen },
-  { name: "Activity", icon: Activity },
-  { name: "Settings", icon: Settings },
-];
-
 export default function Sidebar() {
-  const [active, setActive] = useState("Dashboard");
-
   return (
-    <nav className="w-64 min-h-screen border-r border-zinc-800 p-6 bg-zinc-950 text-white">
-      
-      <h1 className="text-xl font-bold mb-8">LearnX</h1>
+    <nav className="w-64 min-h-screen bg-zinc-950 border-r border-zinc-800 p-6 text-white">
 
-      <ul className="space-y-3">
+      <h1 className="text-xl font-bold mb-8">
+        LearnX
+      </h1>
 
-        {items.map((item) => {
-          const Icon = item.icon;
+      <ul className="space-y-2">
 
-          return (
-            <li key={item.name}>
-              <button
-                onClick={() => setActive(item.name)}
-                className={`flex items-center gap-3 w-full px-4 py-2 rounded-lg transition ${
-                  active === item.name
-                    ? "bg-zinc-800 text-cyan-400"
-                    : "text-zinc-300 hover:bg-zinc-900 hover:text-white"
-                }`}
-              >
-                <Icon size={20} />
-                {item.name}
-              </button>
-            </li>
-          );
-        })}
+        <Link href="/" className="flex items-center gap-3 p-2 rounded-lg hover:bg-zinc-800 transition">
+          <LayoutDashboard size={20} />
+          Dashboard
+        </Link>
+
+        <Link href="/#" className="flex items-center gap-3 p-2 rounded-lg hover:bg-zinc-800 transition">
+          <BookOpen size={20} />
+          Courses
+        </Link>
+
+        <Link href="/#" className="flex items-center gap-3 p-2 rounded-lg hover:bg-zinc-800 transition">
+          <Activity size={20} />
+          Activity
+        </Link>
+
+        <Link href="/#" className="flex items-center gap-3 p-2 rounded-lg hover:bg-zinc-800 transition">
+          <Settings size={20} />
+          Settings
+        </Link>
 
       </ul>
     </nav>
